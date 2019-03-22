@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   def index
+    @posts = Post.all
   end
 
   def show
@@ -12,7 +13,14 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    redirect_to @post
+
+    if @post.save
+      flash[:success] = "Your post has been created."
+      redirect_to @post
+    else
+      flash[:warning] = "Your post could not be created."
+      render :new
+    end
   end
 
   private

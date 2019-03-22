@@ -11,4 +11,12 @@ feature 'Creating posts' do
     expect(page).to have_content('#coffeetime')
     expect(page).to have_css("img[src*='coffee.jpg']")
   end
+
+  it 'needs an image to create a post' do
+    visit '/'
+    click_link 'New Post'
+    fill_in 'Caption', with: 'Dab on the haters'
+    click_button 'Create Post'
+    expect(page).to have_content('Your post could not be created.')
+  end
 end
