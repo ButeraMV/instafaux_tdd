@@ -1,7 +1,7 @@
 %h1 Instafaux
 
-= link_to "New Post", new_post_path
+=link_to "New Post", new_post_path
 
-- @posts.each do |post|
-  = image_tag post.image.variant(resize: "500x500")
-  = post.caption
+-@posts.each do |post|
+  =link_to (image_tag post.image.variant(resize: "500x500")), post_path(post)
+  %p= post.caption
