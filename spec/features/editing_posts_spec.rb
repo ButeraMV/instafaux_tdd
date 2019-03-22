@@ -17,7 +17,7 @@ feature 'Editing posts' do
     expect(page).to have_content("Now THIS is podracing!")
   end
 
-  it "won't update a post without an image" do
+  xit "won't update a post without an image" do
     attach_file('Image', 'spec/files/coffee.txt')
     click_button 'Update Post'
 
