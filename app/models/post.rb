@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
-  validates :image, presence: true
   has_one_attached :image
+
+  validates :image, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
 end
