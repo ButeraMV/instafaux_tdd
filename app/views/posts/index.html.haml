@@ -1,7 +1,10 @@
-%h1 Instafaux
-
-=link_to "New Post", new_post_path
-
--@posts.each do |post|
-  =link_to (image_tag post.image.variant(resize: "500x500")), post_path(post)
-  %p= post.caption
+.posts-wrapper.row
+  -@posts.each do |post|
+    .post
+      .post-head
+        .name
+          Peter Parker
+      .image.center-block
+        =link_to (image_tag post.image), post_path(post)
+      %p.caption
+        =post.caption
