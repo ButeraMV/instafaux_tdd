@@ -3,13 +3,12 @@ require 'rails_helper'
 feature 'Index displays a list of posts' do
   background do
     user = create(:user)
+    post_one = create(:post, caption: "This is post one", user_id: user.id)
+    post_two = create(:post, caption: "This is the second post", user_id: user.id)
     sign_in_with user
   end
 
   scenario 'the index displays correct created post information' do
-    post_one = create(:post, caption: "This is post one")
-    post_two = create(:post, caption: "This is the second post")
-
     visit '/'
 
     expect(page).to have_content('This is post one')
