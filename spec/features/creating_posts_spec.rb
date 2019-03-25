@@ -4,9 +4,8 @@ feature 'Creating posts' do
   background do
     user = create(:user)
     visit '/'
-    click_link 'Login'
-    fill_in 'Email', with: 'fancyfrank@gmail.com'
-    fill_in 'Password', with: 'illbeback'
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
     click_button 'Log in'
   end
 

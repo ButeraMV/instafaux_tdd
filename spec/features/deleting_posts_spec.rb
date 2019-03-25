@@ -1,16 +1,19 @@
 require 'rails_helper'
 
-feature 'Deleting posts' do
+feature 'deleting posts' do
   background do
     post = create(:post, caption: 'Abs for days.')
+    user = create :user
 
     visit '/'
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Log in'
 
     find(:xpath, "//a[contains(@href,'posts/#{post.id}')]").click
     click_link 'Edit Post'
   end
-
-  scenario 'Can delete a single post' do
+  scenario 'can delete a post' do
     click_link 'Delete Post'
 
     expect(page).to have_content('Post deleted.')
