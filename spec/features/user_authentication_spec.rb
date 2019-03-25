@@ -18,4 +18,16 @@ feature 'User authentication' do
     expect(page).to_not have_content('Register')
     expect(page).to have_content('Logout')
   end
+
+  scenario 'can log out once logged in' do
+    visit '/'
+
+    click_link 'Login'
+    fill_in 'Email', with: 'fancyfrank@gmail.com'
+    fill_in 'Password', with: 'illbeback'
+    click_button 'Log in'
+    click_link 'Logout'
+
+    expect(page).to have_content('Signed out successfully.')
+  end
 end
