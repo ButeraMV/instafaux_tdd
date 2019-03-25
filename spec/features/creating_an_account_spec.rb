@@ -15,4 +15,13 @@ feature 'Creating a new user' do
 
     expect(page).to have_content 'Welcome! You have signed up successfully.'
    end
+
+  scenario 'requires a user name to successfully create an account' do
+    fill_in 'Email', with: 'sxyrailsdev@myspace.com'
+    fill_in 'user[password]', with: 'supersecret'
+    fill_in 'user[password_confirmation]', with: 'supersecret'
+    click_button 'Sign up'
+
+    expect(page).to have_content 'Please review the problems below'
+  end
 end
